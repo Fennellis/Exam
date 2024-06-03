@@ -1,0 +1,116 @@
+1.
+fennellis@fennellis-VirtualBox:~$ mkdir exam
+fennellis@fennellis-VirtualBox:~$ cd exam
+
+fennellis@fennellis-VirtualBox:~/exam$ nano pets
+fennellis@fennellis-VirtualBox:~/exam$ cat pets
+Dogs
+Cats
+Hamsters
+fennellis@fennellis-VirtualBox:~/exam$ nano pack_animals
+fennellis@fennellis-VirtualBox:~/exam$ cat pack_animals
+Horses
+Camels
+Donkeys
+fennellis@fennellis-VirtualBox:~/exam$ cat pets pack_animals > mans_friends
+fennellis@fennellis-VirtualBox:~/exam$ cat mans_friends
+Dogs
+Cats
+Hamsters
+Horses
+Camels
+Donkeys
+
+2.
+fennellis@fennellis-VirtualBox:~/exam$ mkdir new_dir
+fennellis@fennellis-VirtualBox:~/exam$ mv mans_friends new_dir/
+fennellis@fennellis-VirtualBox:~/exam$ cd new_dir/
+fennellis@fennellis-VirtualBox:~/exam/new_dir$ ls
+mans_friends
+
+3.
+fennellis@fennellis-VirtualBox:~/exam/new_dir$ sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu xenial main'
+[sudo] пароль для fennellis:
+Репозиторий: 'deb http://archive.ubuntu.com/ubuntu xenial main'
+Описание:
+Archive for codename: xenial components: main
+Дополнительные сведения: http://archive.ubuntu.com/ubuntu
+Добавление репозитория.
+Нажмите [ENTER] для продолжения или Ctrl-C для отмены.
+Adding deb entry to /etc/apt/sources.list.d/archive_uri-http_archive_ubuntu_com_ubuntu-jammy.list
+Adding disabled deb-src entry to /etc/apt/sources.list.d/archive_uri-http_archive_ubuntu_com_ubuntu-jammy.list
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu jammy InRelease
+Пол:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Пол:4 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Пол:5 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+Ошб:5 http://archive.ubuntu.com/ubuntu xenial InRelease
+  Следующие подписи не могут быть проверены, так как недоступен открытый ключ: NO_PUBKEY 40976EAF437D05B5 NO_PUBKEY 3B4FE6ACC0B21F32
+Пол:6 http://nginx.org/packages/ubuntu jammy InRelease [3 590 B]
+Ошб:6 http://nginx.org/packages/ubuntu jammy InRelease
+  Следующие подписи не могут быть проверены, так как недоступен открытый ключ: NO_PUBKEY ABF5BD827BD9BF62
+Чтение списков пакетов… Готово
+W: Ошибка GPG: http://archive.ubuntu.com/ubuntu xenial InRelease: Следующие подписи не могут быть проверены, так как недоступен открытый ключ: NO_PUBKEY 40976EAF437D05B5 NO_PUBKEY 3B4FE6ACC0B21F32
+E: Репозиторий «http://archive.ubuntu.com/ubuntu xenial InRelease» не подписан.
+N: Обновление из этого репозитория нельзя выполнить безопасным способом, поэтому по умолчанию он отключён.
+N: Информацию о создании репозитория и настройках пользователя смотрите в справочной странице apt-secure(8).
+W: Ошибка GPG: http://nginx.org/packages/ubuntu jammy InRelease: Следующие подписи не могут быть проверены, так как недоступен открытый ключ: NO_PUBKEY ABF5BD827BD9BF62
+E: Репозиторий «http://nginx.org/packages/ubuntu jammy InRelease» не подписан.
+N: Обновление из этого репозитория нельзя выполнить безопасным способом, поэтому по умолчанию он отключён.
+N: Информацию о создании репозитория и настройках пользователя смотрите в справочной странице apt-secure(8).
+
+fennellis@fennellis-VirtualBox:~/exam/new_dir$ sudo apt update
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu jammy InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Сущ:4 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Пол:5 http://nginx.org/packages/ubuntu jammy InRelease [3 590 B]
+Пол:6 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+Ошб:5 http://nginx.org/packages/ubuntu jammy InRelease
+  Следующие подписи не могут быть проверены, так как недоступен открытый ключ: NO_PUBKEY ABF5BD827BD9BF62
+Ошб:6 http://archive.ubuntu.com/ubuntu xenial InRelease
+  Следующие подписи не могут быть проверены, так как недоступен открытый ключ: NO_PUBKEY 40976EAF437D05B5 NO_PUBKEY 3B4FE6ACC0B21F32
+Чтение списков пакетов… Готово
+W: Ошибка GPG: http://nginx.org/packages/ubuntu jammy InRelease: Следующие подписи не могут быть проверены, так как недоступен открытый ключ: NO_PUBKEY ABF5BD827BD9BF62
+E: Репозиторий «http://nginx.org/packages/ubuntu jammy InRelease» не подписан.
+N: Обновление из этого репозитория нельзя выполнить безопасным способом, поэтому по умолчанию он отключён.
+N: Информацию о создании репозитория и настройках пользователя смотрите в справочной странице apt-secure(8).
+W: Ошибка GPG: http://archive.ubuntu.com/ubuntu xenial InRelease: Следующие подписи не могут быть проверены, так как недоступен открытый ключ: NO_PUBKEY 40976EAF437D05B5 NO_PUBKEY 3B4FE6ACC0B21F32
+E: Репозиторий «http://archive.ubuntu.com/ubuntu xenial InRelease» не подписан.
+N: Обновление из этого репозитория нельзя выполнить безопасным способом, поэтому по умолчанию он отключён.
+N: Информацию о создании репозитория и настройках пользователя смотрите в справочной странице apt-secure(8).
+
+fennellis@fennellis-VirtualBox:~/exam/new_dir$ sudo apt install mysql-server
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово
+Уже установлен пакет mysql-server самой новой версии (8.0.36-0ubuntu0.22.04.1).
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 0 пакетов, и 126 пакетов не обновлено.
+
+4.
+fennellis@fennellis-VirtualBox:~$ cd Загрузки/
+fennellis@fennellis-VirtualBox:~/Загрузки$ ls
+vivaldi-stable_6.7.3329.39-1_amd64.deb
+
+fennellis@fennellis-VirtualBox:~/Загрузки$ sudo dpkg -i vivaldi-stable_6.7.3329.39-1_amd64.deb
+Выбор ранее не выбранного пакета vivaldi-stable.
+(Чтение базы данных … на данный момент установлен 195781 файл и каталог.)
+Подготовка к распаковке vivaldi-stable_6.7.3329.39-1_amd64.deb …
+Распаковывается vivaldi-stable (6.7.3329.39-1) …
+Настраивается пакет vivaldi-stable (6.7.3329.39-1) …
+update-alternatives: используется /usr/bin/vivaldi-stable для предоставления /usr/bin/x-www-browser (x-www-browser) в автоматическом режиме
+update-alternatives: используется /usr/bin/vivaldi-stable для предоставления /usr/bin/gnome-www-browser (gnome-www-browser) в автоматическом режиме
+update-alternatives: используется /usr/bin/vivaldi-stable для предоставления /usr/bin/vivaldi (vivaldi) в автоматическом режиме
+Обрабатываются триггеры для mailcap (3.70+nmu1ubuntu1) …
+Обрабатываются триггеры для gnome-menus (3.36.0-1ubuntu3) …
+Обрабатываются триггеры для desktop-file-utils (0.26-1ubuntu3) …
+
+fennellis@fennellis-VirtualBox:~/Загрузки$ sudo dpkg -r vivaldi-stable
+(Чтение базы данных … на данный момент установлено 196673 файла и каталога.)
+Удаляется vivaldi-stable (6.7.3329.39-1) …
+update-alternatives: используется /usr/bin/firefox для предоставления /usr/bin/x-www-browser (x-www-browser) в автоматическом режиме
+update-alternatives: используется /usr/bin/firefox для предоставления /usr/bin/gnome-www-browser (gnome-www-browser) в автоматическом режиме
+Обрабатываются триггеры для mailcap (3.70+nmu1ubuntu1) …
+Обрабатываются триггеры для gnome-menus (3.36.0-1ubuntu3) …
+Обрабатываются триггеры для desktop-file-utils (0.26-1ubuntu3) …
+
