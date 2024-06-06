@@ -1,0 +1,108 @@
+DROP DATABASE IF EXISTS MF;
+CREATE DATABASE MF;
+USE MF;
+
+
+#9 ---------------------------------------------------------------------
+
+CREATE TABLE Cats (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50),
+    Birthdate DATE
+);
+
+INSERT INTO Cats (Name, Birthdate) VALUES ("Barsik", '2017-12-03');
+INSERT INTO Cats (Name, Birthdate) VALUES ("Pushok", '2023-07-16'); 
+
+CREATE TABLE Dogs (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50),
+    Birthdate DATE
+);
+
+INSERT INTO Dogs (Name, Birthdate) VALUES ("Bobik", '2022-01-27');
+INSERT INTO Dogs (Name, Birthdate) VALUES ("Sharik", '2013-03-13');
+
+CREATE TABLE Hamsters (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50),
+    Birthdate DATE
+);
+
+INSERT INTO Hamsters (Name, Birthdate) VALUES ("Kafka", '2024-05-09');
+INSERT INTO Hamsters (Name, Birthdate) VALUES ("Pirozhok", '2023-11-01');
+
+CREATE TABLE Horses (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50),
+    Birthdate DATE
+);
+
+INSERT INTO Horses (Name, Birthdate) VALUES ("Burya", '2009-02-19');
+INSERT INTO Horses (Name, Birthdate) VALUES ("Veter", '2012-04-05');
+
+CREATE TABLE Camels (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50),
+    Birthdate DATE
+);
+
+INSERT INTO Camels (Name, Birthdate) VALUES ("Gorbachev", '2007-12-30');
+INSERT INTO Camels (Name, Birthdate) VALUES ("Lenin", '2005-01-07');
+
+CREATE TABLE Donkeys (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50),
+    Birthdate DATE
+);
+
+INSERT INTO Donkeys (Name, Birthdate) VALUES ("Perviy", '2013-08-13');
+INSERT INTO Donkeys (Name, Birthdate) VALUES ("Vtoroy", '2015-08-13');
+
+
+#10 ----------------------------------------------------------
+
+DROP TABLE Camels;
+
+CREATE TABLE Packs AS
+(SELECT * FROM Horses
+UNION
+SELECT * FROM Donkeys);
+
+ALTER TABLE Packs
+    DROP COLUMN id,
+    ADD COLUMN id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+
+DROP TABLE Horses;
+DROP TABLE Donkeys;
+
+#11 ----------------------------------------------------------
+
+CREATE TABLE Young_animals AS
+(SELECT id, Name, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS Age_months
+ FROM (SELECT * FROM Cats UNION (SELECT * FROM Dogs) UNION (SELECT * FROM Hamsters) UNION (SELECT * FROM Packs)) AS All_animals
+ WHERE TIMESTAMPDIFF(YEAR, Birthdate, CURDATE()) BETWEEN 1 AND 2);
+
+ALTER TABLE Young_animals
+    DROP COLUMN id,
+    ADD COLUMN id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+
+#12 ----------------------------------------------------------
+
+CREATE TABLE Animals (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50),
+    Birthdate DATE,
+    Source_table VARCHAR(50)
+);
+
+INSERT INTO Animals (Name, Birthdate, Source_table)
+SELECT Name, Birthdate, 'Horses' AS Source_table FROM Cats
+UNION ALL
+(SELECT Name, Birthdate, 'Donkeys' AS Source_table FROM Dogs)
+UNION ALL
+(SELECT Name, Birthdate, 'Hamsters' AS Source_table FROM Hamsters)
+UNION ALL
+(SELECT Name, Birthdate, 'Packs' AS Source_table FROM Packs);
+
+
